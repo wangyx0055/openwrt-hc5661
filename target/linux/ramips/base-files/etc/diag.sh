@@ -207,6 +207,9 @@ get_status_led() {
 	na930)
 		status_led="na930:blue:power"
 		;;
+  hiwifi-hc5761)
+    status_led="HC5761:green:system"
+    ;;
 	y1 | \
 	y1s)
 		status_led="lenovo:blue:power"
