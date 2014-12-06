@@ -11,10 +11,13 @@ define Profile/HiWiFi-HC5761
    kmod-usb-core kmod-usb-dwc2 kmod-usb2 kmod-usb-storage  \
    kmod-mmc-spi kmod-sdhci kmod-sdhci-mt7620 \
    block-mount mountd kmod-fs-ext4 ppp-mod-pppoe e2fsprogs \
-   kmod-ledtrig-usbdev fdisk
+   kmod-ledtrig-usbdev \
+   kmod-fs-vfat fdisk ntfs-3g blkid \
+   openssh-sftp-server \
+   nfs-kernel-server nfs-kernel-server-utils kmod-loop portmap
 endef
 
 define Profile/HiWiFi-HC5761/Description
- Default on SD cards and USB storage support.
+ Default on SD cards, USB storage and nfs-server support.
 endef
 $(eval $(call Profile,HiWiFi-HC5761))
