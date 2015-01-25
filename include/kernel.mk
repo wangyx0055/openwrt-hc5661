@@ -35,9 +35,7 @@ else
   endif
   KERNEL_BUILD_DIR ?= $(BUILD_DIR)/linux-$(BOARD)$(if $(SUBTARGET),_$(SUBTARGET))
   LINUX_DIR ?= $(KERNEL_BUILD_DIR)/linux-$(LINUX_VERSION)
-  ifeq ($(strip $(call CompareKernelPatchVer,$(KERNEL_PATCHVER),ge,3.7.0)),1)
-    LINUX_UAPI_DIR=uapi/
-  endif
+  LINUX_UAPI_DIR=uapi/
   LINUX_VERMAGIC:=$(strip $(shell cat $(LINUX_DIR)/.vermagic 2>/dev/null))
   LINUX_VERMAGIC:=$(if $(LINUX_VERMAGIC),$(LINUX_VERMAGIC),unknown)
 
@@ -64,12 +62,19 @@ endif
 
 ifneq (,$(findstring uml,$(BOARD)))
   LINUX_KARCH=um
+else ifneq (,$(findstring $(ARCH), aarch64 aarch64_be))
+  LINUX_KARCH := arm64
+else ifneq (,$(findstring $(ARCH), armeb))
+  LINUX_KARCH := arm
+else ifneq (,$(findstring $(ARCH), mipsel mips64 mips64el))
+  LINUX_KARCH := mips
+else ifneq (,$(findstring $(ARCH), sh2 sh3 sh4))
+  LINUX_KARCH := sh
+else ifneq (,$(findstring $(ARCH), i386 x86_64))
+  LINUX_KARCH := x86
 else
-  ifeq (,$(LINUX_KARCH))
-    LINUX_KARCH=$(strip $(subst i386,x86,$(subst armeb,arm,$(subst mipsel,mips,$(subst mips64,mips,$(subst mips64el,mips,$(subst sh2,sh,$(subst sh3,sh,$(subst sh4,sh,$(subst aarch64,arm64,$(subst aarch64_be,arm64,$(ARCH))))))))))))
-  endif
+  LINUX_KARCH := $(ARCH)
 endif
-
 
 define KernelPackage/Defaults
   FILES:=

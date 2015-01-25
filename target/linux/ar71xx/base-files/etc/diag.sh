@@ -80,6 +80,9 @@ get_status_led() {
 	el-m150)
 		status_led="easylink:green:system"
 		;;
+	f9k1115v2)
+		status_led="belkin:blue:status"
+		;;
 	gl-inet)
 		status_led="gl-connect:green:lan"
 		;;
@@ -207,6 +210,7 @@ get_status_led() {
 	tl-mr3220-v2 | \
 	tl-mr3420 | \
 	tl-mr3420-v2 | \
+	tl-wa701nd-v2 | \
 	tl-wa801nd-v2 | \
 	tl-wa901nd | \
 	tl-wa901nd-v2 | \
@@ -250,6 +254,9 @@ get_status_led() {
 		;;
 	uap-pro)
 		status_led="ubnt:white:dome"
+		;;
+	unifi-outdoor-plus)
+		status_led="ubnt:white:front"
 		;;
 	airgateway)
 		status_led="ubnt:white:status"
@@ -304,6 +311,9 @@ set_state() {
 		;;
 	failsafe)
 		status_led_blink_failsafe
+		;;
+	preinit_regular)
+		status_led_blink_preinit_regular
 		;;
 	done)
 		status_led_on

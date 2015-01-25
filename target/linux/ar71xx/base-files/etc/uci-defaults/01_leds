@@ -87,6 +87,10 @@ eap300v2)
 	ucidef_set_led_wlan "wlan" "WLAN" "engenius:blue:wlan" "phy0tpt"
 	;;
 
+f9k1115v2)
+	ucidef_set_led_usbdev "usb2" "USB2" "belkin:green:usb2" "1-1"
+	;;
+
 rb-750)
 	ucidef_set_led_default "act" "act" "rb750:green:act" "1"
 	ucidef_set_led_netdev "port1" "port1" "rb750:green:port1" "eth1"
@@ -304,6 +308,11 @@ tl-wa850re)
 	ucidef_set_led_rssi "rssimedium" "RSSIMEDIUM" "tp-link:blue:signal3" "wlan0" "40" "100" "-39" "13"
 	ucidef_set_led_rssi "rssimediumhigh" "RSSIMEDIUMHIGH" "tp-link:blue:signal4" "wlan0" "60" "100" "-59" "13"
 	ucidef_set_led_rssi "rssihigh" "RSSIHIGH" "tp-link:blue:signal5" "wlan0" "80" "100" "-79" "13"
+	;;
+
+tl-wa701nd-v2)
+	ucidef_set_led_netdev "lan" "LAN" "tp-link:green:lan" "eth0"
+	ucidef_set_led_wlan "wlan" "WLAN" "tp-link:green:wlan" "phy0tpt"
 	;;
 
 tl-wa860re)
